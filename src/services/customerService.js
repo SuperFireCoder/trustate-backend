@@ -1,6 +1,10 @@
 import { Customer } from '../models/customer.js';
 
-let customers = [];
+let customers = [
+    new Customer(1, 'John', 'Middle', 'Doe', 'john@example.com'),
+    new Customer(2, 'Jane', 'Middle', 'Smith', 'jane@example.com'),
+    new Customer(3, 'Mark', 'Anthony', 'Brown', 'mark@example.com'),
+];
 
 export const createCustomer = ({ FirstName, SecondName, LastName, Email }) => {
     const id = customers.length + 1;
