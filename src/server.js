@@ -1,20 +1,31 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { config } from 'dotenv';
-config();
+import dotenv from 'dotenv';
+import typeDefs from './graphql/schema.js';
+import customerResolvers from './graphql/resolvers/customer.js';
 
-const app = express();
-const server = new ApolloServer({
-    typeDefs: 'type Query { hello: String }',
-    resolvers: {
-        Query: {
-            hello: () => 'Hello, world!',
-        },
-    },
-});
+dotenv.config();
 
-server.applyMiddleware({ app });
+const startServer = async () => {
+    const app = express();
 
-app.listen(process.env.PORT, () => {
-    console.log('Server running on http://localhost:4000/graphql');
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers: customerResolvers,
+    });
+
+    // Start the Apollo Server before applying middleware
+    await server.start();
+
+    // Apply Apollo Server as middleware to the Express app
+    server.applyMiddleware({ app });
+
+    app.listen(process.env.PORT, () => {
+        console.log(`Server running on http://localhost:${process.env.PORT}${server.graphqlPath}`);
+    });
+};
+
+// Start the server
+startServer().catch((error) => {
+    console.error('Failed to start the server:', error);
 });
