@@ -4,6 +4,7 @@ export class Customer {
         this.FirstName = firstName;
         this.SecondName = secondName;
         this.LastName = lastName;
+        this.FullName = `${firstName} ${secondName} ${lastName}`;
         this.Email = email;
     }
 }

@@ -2,12 +2,12 @@ import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
   type Customer {
-    ID: ID!
-    FirstName: String!
-    SecondName: String!
-    LastName: String!
-    Email: String!
-    FullName: String!
+    ID: ID
+    FirstName: String
+    SecondName: String
+    LastName: String
+    Email: String
+    FullName: String
   }
 
   type Query {
@@ -16,7 +16,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    CreateCustomer(FirstName: String!, SecondName: String!, LastName: String!, Email: String!): Customer
+    CreateCustomer(
+      FullName: String
+      FirstName: String
+      SecondName: String
+      LastName: String
+      Email: String
+    ): Customer
     UpdateCustomer(ID: ID!, FirstName: String, SecondName: String, LastName: String, Email: String): Customer
     DeleteCustomer(ID: ID!): Customer
   }

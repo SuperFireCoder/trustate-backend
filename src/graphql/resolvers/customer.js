@@ -1,6 +1,7 @@
 import {
     createCustomer,
     getAllCustomers,
+    getCustomerById,
     updateCustomer,
     deleteCustomer,
 } from '../../services/customerService.js';
