@@ -26,6 +26,25 @@ describe('Customer API', () => {
     expect(res.data.CreateCustomer.FullName).toBe('John Middle Doe');
   });
 
+  test('Fetches a single customer by ID', async () => {
+    const GET_CUSTOMER = `
+      query {
+        Customer(ID: "${customerId}") {
+          ID
+          FirstName
+          LastName
+          FullName
+        }
+      }
+    `;
+
+    const res = await query({ query: GET_CUSTOMER });
+    expect(res.data.Customer.ID).toBe(customerId);
+    expect(res.data.Customer.FirstName).toBe('John');
+    expect(res.data.Customer.LastName).toBe('Doe');
+    expect(res.data.Customer.FullName).toBe('John Middle Doe');
+  });
+
   test('Updates an existing customer', async () => {
     const CREATE_CUSTOMER = `
       mutation {

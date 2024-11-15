@@ -13,6 +13,14 @@ export const getAllCustomers = () => {
     return customers;
 };
 
+export const getCustomerById = (id) => {
+    const customer = customers.find((customer) => customer.ID === id);
+    if (!customer) {
+        throw new Error('Customer not found');
+    }
+    return customer;
+};
+
 export const updateCustomer = (id, updates) => {
     const customerIndex = customers.findIndex((customer) => customer.ID === id);
     if (customerIndex === -1) {

@@ -19,6 +19,16 @@ const customerResolvers = {
                 throw new Error('Failed to fetch customers');
             }
         },
+        Customer: (_, { ID }) => {
+            try {
+                const customer = getCustomerById(parseInt(ID, 10));
+                logger.info(`Fetched customer with ID: ${ID}`);
+                return customer;
+            } catch (error) {
+                logger.error(`Error fetching customer with ID ${ID}: ${error.message}`);
+                throw new Error('Failed to fetch customer');
+            }
+        },
     },
     Mutation: {
         CreateCustomer: async (_, args) => {

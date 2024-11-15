@@ -12,6 +12,7 @@ const typeDefs = gql`
 
   type Query {
     Customers: [Customer]
+    Customer(ID: ID!): Customer
   }
 
   type Mutation {
