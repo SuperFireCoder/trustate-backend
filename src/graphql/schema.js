@@ -8,6 +8,9 @@ const typeDefs = gql`
     LastName: String
     Email: String
     FullName: String
+    Date: String
+    Location: String
+    Description: String
   }
 
   type Query {
@@ -22,8 +25,22 @@ const typeDefs = gql`
       SecondName: String
       LastName: String
       Email: String
+      Date: String
+      Location: String
+      Description: String
     ): Customer
-    UpdateCustomer(ID: ID!, FirstName: String, SecondName: String, LastName: String, Email: String): Customer
+
+    UpdateCustomer(
+      ID: ID!
+      FirstName: String
+      SecondName: String
+      LastName: String
+      Email: String
+      Date: String
+      Location: String
+      Description: String
+    ): Customer
+    
     DeleteCustomer(ID: ID!): Customer
   }
 `;
