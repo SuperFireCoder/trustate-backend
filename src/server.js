@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import typeDefs from './graphql/schema.js';
 import customerResolvers from './graphql/resolvers/customer.js';
 import { handleError } from './utils/errorHandler.js';
+import logger from './logging/logger.js';
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ const startServer = async () => {
     });
 
     app.listen(process.env.PORT, () => {
-        console.log(`Server running on http://localhost:${process.env.PORT}${server.graphqlPath}`);
+        logger.info('Server started');
     });
 };
 
