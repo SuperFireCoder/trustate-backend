@@ -12,3 +12,21 @@ export const createCustomer = ({ FirstName, SecondName, LastName, Email }) => {
 export const getAllCustomers = () => {
     return customers;
 };
+
+export const updateCustomer = (id, updates) => {
+    const customerIndex = customers.findIndex((customer) => customer.ID === id);
+    if (customerIndex === -1) {
+        throw new Error('Customer not found');
+    }
+    customers[customerIndex] = { ...customers[customerIndex], ...updates };
+    return customers[customerIndex];
+};
+
+export const deleteCustomer = (id) => {
+    const customerIndex = customers.findIndex((customer) => customer.ID === id);
+    if (customerIndex === -1) {
+        throw new Error('Customer not found');
+    }
+    const [deletedCustomer] = customers.splice(customerIndex, 1);
+    return deletedCustomer;
+};

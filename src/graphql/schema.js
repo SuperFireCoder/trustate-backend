@@ -7,6 +7,7 @@ const typeDefs = gql`
     SecondName: String!
     LastName: String!
     Email: String!
+    FullName: String!
   }
 
   type Query {
@@ -14,12 +15,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    CreateCustomer(
-      FirstName: String!
-      SecondName: String!
-      LastName: String!
-      Email: String!
-    ): Customer
+    CreateCustomer(FirstName: String!, SecondName: String!, LastName: String!, Email: String!): Customer
+    UpdateCustomer(ID: ID!, FirstName: String, SecondName: String, LastName: String, Email: String): Customer
+    DeleteCustomer(ID: ID!): Customer
   }
 `;
 
