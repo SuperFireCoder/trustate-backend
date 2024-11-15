@@ -27,11 +27,11 @@ const startServer = async () => {
     });
 
     app.listen(process.env.PORT, () => {
-        logger.info('Server started');
+        logger.info(`Server running on http://localhost:${process.env.PORT}${server.graphqlPath}`);
     });
 };
 
 // Start the server
 startServer().catch((error) => {
-    console.error('Failed to start the server:', error);
+    logger.error(`Failed to start the server: ${error.message}`);
 });

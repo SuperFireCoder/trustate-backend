@@ -1,3 +1,5 @@
+import logger from '../logging/logger.js';
+
 export class AppError extends Error {
     constructor(message, statusCode) {
         super(message);
@@ -9,8 +11,10 @@ export class AppError extends Error {
 
 export const handleError = (err, res) => {
     if (err.isOperational) {
+        logger.warn(`Operational error: ${err.message}`);
         return res.status(err.statusCode).json({ status: 'error', message: err.message });
     }
-    console.error(err);
+
+    logger.error(`Unexpected error: ${err.message}`);
     return res.status(500).json({ status: 'error', message: 'Something went wrong!' });
 };
