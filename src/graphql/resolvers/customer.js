@@ -1,17 +1,12 @@
-import { Customer } from '../../models/customer.js';
-
-let customers = [];
+import { createCustomer, getAllCustomers } from '../../services/customerService.js';
 
 const customerResolvers = {
     Query: {
-        Customers: () => customers,
+        Customers: () => getAllCustomers(),
     },
     Mutation: {
         CreateCustomer: (_, args) => {
-            const id = customers.length + 1;
-            const newCustomer = new Customer(id, args.FirstName, args.SecondName, args.LastName, args.Email);
-            customers.push(newCustomer);
-            return newCustomer;
+            return createCustomer(args);
         },
     },
 };
