@@ -1,4 +1,7 @@
 {
+  "name": "trustate-assessment-backend",
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "start": "nodemon src/server.js"
   },
@@ -9,6 +12,8 @@
     "graphql": "^16.9.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
     "nodemon": "^3.1.7"
   }
 }
