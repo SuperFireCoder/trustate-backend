@@ -1,7 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import dotenv from 'dotenv';
-dotenv.config();
+import { config } from 'dotenv';
+config();
 
 const app = express();
 const server = new ApolloServer({
@@ -15,6 +15,6 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server running on http://localhost:4000/graphql');
 });
